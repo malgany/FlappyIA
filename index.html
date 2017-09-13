@@ -1,0 +1,57 @@
+<html>
+	<head>
+		<title>Flappy IA</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/synaptic/1.1.1/synaptic.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
+		<script type="text/javascript" src="js/Genetic.js"></script>
+		<script type="text/javascript" src="js/GameArea.js"></script>
+		<script type="text/javascript" src="js/Component.js"></script>
+		<script type="text/javascript" src="js/game.js"></script>
+		<style>
+			#canvascontainer canvas {
+				border: 1px solid #d3d3d3;
+				background-color: #f1f1f1;
+				background-size: 100% 100%;
+				background: #868b87;
+				color: #0cff15;
+				/*background-image: url("images/stage.png");*/
+				/*-webkit-background-image: url("images/stage.png");*/
+			}
+
+			#myfilter {
+				position: absolute;
+				background-color: rgb(0, 0, 0);
+				opacity: 0.3;
+				width: 800px;
+				height: 450px;
+				display: block;
+			}
+
+			#mystartbutton {
+				position: relative;
+				padding-top: 200px;
+				padding-left: 380px;
+				display: block;
+			}
+
+			.button-x {
+				position: absolute;
+				top: 453px;
+			}
+		</style>
+	</head>
+	<body style="position: relative; min-height: 100%; top: 0px;">
+		<div id="myfilter">
+		</div>
+		<div id="myrestartbutton" style="position: absolute; padding-top: 75px; padding-left: 120px; display: none;">
+			<button onclick="restartGame()">Restart</button>
+		</div>
+		<div id="mystartbutton">
+			<button onclick="startGame()">Start</button>
+		</div>
+		<div id="canvascontainer"></div>
+		<div class="button-x">
+			<span id="velocidade"></span>
+		</div>
+	</body>
+</html>
