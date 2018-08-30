@@ -1,2 +1,2 @@
 # FlappyIA
-Programando I.A. com javascript - FlappyIA
+Programming I.A. with javascript - FlappyIA
