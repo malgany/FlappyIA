@@ -10,7 +10,7 @@ var velocidade_personagem = velocidade_atual + 2;
 var count_quantidade = 0;
 
 var velocidade_restart = 0;
-var numero_genomas = 50;
+var numero_genomas = 500;
 var record_fitness = 0;
 var controle = numero_genomas;
 var geracao = 1;
@@ -103,11 +103,15 @@ function updateGameArea() {
         ];
 
         var active = Genetic.activateNetwork(genomas[j], input_g);
-
+        var quad = active[1] * 100;
         validaState(active, j);
 
         myGamePieces[j].x += myGamePieces[j].speedX;
         myGamePieces[j].y += myGamePieces[j].speedY;
+
+        myGamePieces[j].width = quad > 10 ? quad : 10;
+        myGamePieces[j].height = quad > 10 ? quad : 10;
+
         myGamePieces[j].update();
     }
 
@@ -118,21 +122,21 @@ function updateGameArea() {
             x = myGameArea.canvas.width;
             y = myGameArea.canvas.height - 100;
             height = rdn(1, 350);
-            gap = 100;
+            gap = rdn(50, 250);
 
             myObstacles.push(new Component({
                 width: 15,
                 height: height,
                 x: x,
                 y: 0,
-                fill: "#233"
+                fill: "#38ff8f"
             }));
             myObstacles.push(new Component({
                 width: 15,
                 height: x - height - gap,
                 x: x,
                 y: height + gap,
-                fill: "#331",
+                fill: "#38ff8f",
                 id: "botton"
             }));
         }

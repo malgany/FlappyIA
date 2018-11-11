@@ -9,10 +9,9 @@ function Genetic() {
     * cria se necessário
     */
     function criaGenomas(num_con, inputs, outputs) {
+        var pool = 10, connections = 15, gates = 5;
         while(genomas.length < num_con) {
-            var pool = 10, connections = 15, gates = 5;
             var g = new Architect.Liquid(inputs, pool, outputs, connections, gates);
-
             g.fitness = 0;
             genomas.push(g);
         }

@@ -16,7 +16,7 @@ function GameArea(obj) {
     this.frameNo = 0;
 
     this.start = function () {
-        this.genetic.criaGenomas(this.numero_genomas, 3, 1);
+        this.genetic.criaGenomas(this.numero_genomas, 3, 2);
         updateGameArea();
     }
 
