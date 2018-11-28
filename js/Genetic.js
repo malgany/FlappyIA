@@ -2,15 +2,11 @@ function Genetic() {
 
     this.criaGenomas = criaGenomas;
     this.activateNetwork = activateNetwork;
-    this.crossover = crossover;
     this.executeGenome = executeGenome;
 
-    /*
-    * cria se necessário
-    */
     function criaGenomas(num_con, inputs, outputs) {
         var pool = 10, connections = 15, gates = 5;
-        while(genomas.length < num_con) {
+        while (genomas.length < num_con) {
             var g = new Architect.Liquid(inputs, pool, outputs, connections, gates);
             g.fitness = 0;
             genomas.push(g);
@@ -19,7 +15,7 @@ function Genetic() {
 
     function activateNetwork(network, input) {
 
-        if(input == undefined) {
+        if (input == undefined) {
             network.fitness = 0;
             input = [0, 0, 0];
         }
@@ -27,14 +23,14 @@ function Genetic() {
         return network.activate(input);
     }
 
-    function crossover() {
+    function prepareCrossover() {
 
         genomas = selectBestGenomes(5);
 
         var bestGenomes = _.clone(genomas);
 
         // crossover de apenas 1/4
-        while (genomas.length < (numero_genomas-Math.round(numero_genomas/2))) {
+        while (genomas.length < (numero_genomas - Math.round(numero_genomas / 2))) {
             var genA = _.sample(bestGenomes).toJSON();
             var genB = _.sample(bestGenomes).toJSON();
 
@@ -97,7 +93,7 @@ function Genetic() {
         }
     }
 
-    function mutate(net){
+    function mutate(net) {
 
         mutateDataKeys(net.neurons, 'bias', 0.3);
 
@@ -106,7 +102,7 @@ function Genetic() {
         return net;
     }
 
-    function mutateDataKeys(a, key, mutationRate){
+    function mutateDataKeys(a, key, mutationRate) {
         for (var k = 0; k < a.length; k++) {
 
             if (Math.random() > mutationRate) {
@@ -116,19 +112,19 @@ function Genetic() {
             a[k][key] += a[k][key] * (Math.random() - 0.5) * 3 + (Math.random() - 0.5);
         }
     }
-	
-	function executeGenome(pos, co) {
-		if(genomas[pos].fitness == undefined || genomas[pos].fitness < myscore.score) {
-			genomas[pos].fitness = myscore.score;
-		}
-		
-		if(myscore.score > record_fitness) {
-			record_fitness = myscore.score;
-		}
-		
-		if(co) {
-			crossover();
-			geracao++;
-		}
-	}
+
+    function executeGenome(pos, co) {
+        if (genomas[pos].fitness == undefined || genomas[pos].fitness < myscore.score) {
+            genomas[pos].fitness = myscore.score;
+        }
+
+        if (myscore.score > record_fitness) {
+            record_fitness = myscore.score;
+        }
+
+        if (co) {
+            prepareCrossover();
+            geracao++;
+        }
+    }
 }
