@@ -10,7 +10,7 @@ var velocidade_personagem = velocidade_atual + 2;
 var count_quantidade = 0;
 
 var velocidade_restart = 0;
-var numero_genomas = 500;
+var numero_genomas = 300;
 var record_fitness = 0;
 var controle = numero_genomas;
 var geracao = 1;
